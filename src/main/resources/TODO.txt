@@ -1,0 +1,9 @@
+*   Голосование хранить в базе данных по интерфейсу:
+        -Current date
+        -UserID
+        -RestaurantID
+*   Implement RestaurantController.
+*   Implement VotingController
+*   Implement repository.* package
+*   Spring Security
+*   Unit tests*??
