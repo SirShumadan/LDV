@@ -1,34 +1,39 @@
 package com.example.ldv.domain;
 
-import java.util.List;
+import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 
+@Entity
+@Table(name="restaurants")
 public class Restaurant {
-    private long id;
+    @Id
+    @GeneratedValue(strategy=GenerationType.AUTO)
+    @Column(name="id", nullable=false, updatable = false)
+    private Long id;
+
+    @Column(name="name", unique=true)
+    @Size(max=100)
+    @NotBlank
     private String name;
-    private List<Dish> dishes;
-
-    public List<Dish> getDishes() {
-        return dishes;
-    }
-
-    public void setDishes(List<Dish> dishes) {
-        this.dishes = dishes;
-    }
-
-    public Restaurant(int id, String name, List<Dish> dishes) {
-        this.id = id;
-        this.name = name;
-        this.dishes = dishes;
-    }
 
     public Restaurant() {
     }
 
-    public long getId() {
+    public Restaurant(String name) {
+        this(null, name);
+    }
+
+    public Restaurant(Long id, String name) {
+        this.id = id;
+        this.name = name;
+    }
+
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -41,10 +46,17 @@ public class Restaurant {
     }
 
     @Override
-    public String toString() {
-        StringBuilder str = new StringBuilder();
-        str.append("Restaurant: ").append(name).append("\n");
-        dishes.forEach(d -> str.append("\t").append("Dish: ").append(d.getName()).append("::").append(d.getPrice()).append("\n"));
-        return str.toString();
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null || getClass() != obj.getClass()) {
+            return false;
+        }
+        if(obj instanceof Restaurant){
+            Restaurant that = (Restaurant) obj;
+            return id != null && id.equals(that.id);
+        }
+        return false;
     }
 }

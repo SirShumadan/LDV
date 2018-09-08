@@ -20,21 +20,20 @@ public class RestaurantController {
         return "";
     }
 
-
     @RequestMapping(value="/{id}", method=RequestMethod.DELETE)
-    @ResponseStatus(HttpStatus.NO_CONTENT)
+//    @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deleteRestaurant(@PathVariable("id") long id){
         //implement method here
     }
 
     @RequestMapping(method=RequestMethod.POST)
-    @ResponseStatus(HttpStatus.CREATED)
+//    @ResponseStatus(HttpStatus.CREATED)
     public void createRestaurant(Restaurant restaurant){
         //implement method here
     }
 
-    @RequestMapping(value="/id", method=RequestMethod.PUT)
-    @ResponseStatus(HttpStatus.NO_CONTENT)
+    @RequestMapping(value="/{id}", method=RequestMethod.PUT)
+//    @ResponseStatus(HttpStatus.NO_CONTENT)
     public void updateRestaurant(){
         //implement method here
     }

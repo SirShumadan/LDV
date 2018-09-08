@@ -1,26 +1,47 @@
 package com.example.ldv.domain;
 
-import java.time.LocalDateTime;
+import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
+@Entity
+@Table(name = "dishes")
 public class Dish {
-    private long id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name="id", nullable=false, updatable = false)
+    private Long id;
+
+    @Column(name = "name", nullable = false)
+    @NotBlank
+    @Size(max = 100)
     private String name;
+
+    @Column(name="price", precision=10, scale=2)
+    @NotNull
     private double price;
-//    private LocalDateTime createdDate;
 
     public Dish() {
     }
 
     public Dish(String name, double price) {
+        this(null, name, price);
         this.name = name;
         this.price = price;
     }
 
-    public long getId() {
+    public Dish(Long id, String name, double price) {
+        this.id = id;
+        this.name = name;
+        this.price = price;
+    }
+
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -38,5 +59,21 @@ public class Dish {
 
     public void setPrice(double price) {
         this.price = price;
+    }
+
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null || getClass() != obj.getClass()) {
+            return false;
+        }
+        if(obj instanceof Dish){
+            Dish that = (Dish) obj;
+            return id != null && id.equals(that.id);
+        }
+        return false;
     }
 }
