@@ -4,13 +4,36 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 
-
+@NamedQueries({
+        @NamedQuery(
+                name = Vote.GET_BY_USER_DATE,
+                query = "SELECT v FROM Vote v WHERE v.userId = :userId AND v.createdDate = :date"
+        ),
+        @NamedQuery(
+                name = Vote.GET_VOTES_BY_DATE,
+                query = "SELECT v FROM Vote v WHERE v.createdDate = :date"
+        ),
+        @NamedQuery(
+                name = Vote.GET_VOTES_BY_USER,
+                query = "SELECT v FROM Vote v WHERE v.userId = :userId"
+        ),
+        @NamedQuery(
+                name = Vote.DELETE,
+                query = "DELETE FROM Vote v WHERE v.id = :id"
+        )
+})
 @Entity
-@Table(name="votes")
+@Table(name = "votes")
 public class Vote {
+    public static final String GET_VOTES_BY_USER = "Vote.getVotesByUser";
+    public static final String GET_BY_USER_DATE = "Vote.getByUserDate";
+    public static final String GET_VOTES_BY_DATE = "Vote.getVotesByDate";
+    public static final String DELETE = "Vote.delete";
+
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name="id", nullable=false, updatable = false)
+    @Column(name = "id", nullable = false, updatable = false)
     private Long id;
 
     @Column(name = "user_id")
@@ -21,7 +44,7 @@ public class Vote {
     @NotNull
     private Long restaurantId;
 
-    @Column(name="created")
+    @Column(name = "created")
     private LocalDate createdDate;
 
     public Vote() {
@@ -68,5 +91,16 @@ public class Vote {
 
     public void setCreatedDate(LocalDate createdDate) {
         this.createdDate = createdDate;
+    }
+
+
+    @Override
+    public String toString() {
+        return "Vote{" +
+                "id=" + id +
+                ", userId=" + userId +
+                ", restaurantId=" + restaurantId +
+                ", createdDate=" + createdDate +
+                '}';
     }
 }

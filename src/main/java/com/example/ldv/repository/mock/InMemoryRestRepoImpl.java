@@ -22,9 +22,9 @@ public class InMemoryRestRepoImpl implements RestaurantRepository{
         return data;
     }
 
-    public Restaurant save(Restaurant restaurant) {
+    public boolean save(Restaurant restaurant) {
         data.add(restaurant);
-        return new Restaurant(restaurant.getId(), restaurant.getName());
+        return data.contains(restaurant);
     }
 
     public boolean delete(Long id) {

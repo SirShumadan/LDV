@@ -6,10 +6,10 @@ import java.time.LocalTime;
 
 public class TimeUtil {
 
-    private static LocalTime lunchTime = LocalTime.of(11, 0);
+    private static final LocalTime LUNCH_TIME = LocalTime.of(11, 0);
 
     public static boolean isVoteCanBeChanged(){
-        if(LocalTime.now().isBefore(lunchTime) || LocalTime.now().equals(lunchTime)){
+        if(LocalTime.now().isBefore(LUNCH_TIME) || LocalTime.now().equals(LUNCH_TIME)){
             return true;
         } else {
             return false;
@@ -20,7 +20,7 @@ public class TimeUtil {
         return LocalTime.now();
     }
 
-    public static LocalDate curreentDate(){
+    public static LocalDate currentDate(){
         return LocalDate.now();
     }
 

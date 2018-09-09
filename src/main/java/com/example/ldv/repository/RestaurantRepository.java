@@ -1,13 +1,12 @@
 package com.example.ldv.repository;
 
 import com.example.ldv.domain.Restaurant;
-import org.springframework.data.repository.CrudRepository;
-import org.springframework.stereotype.Repository;
 
-
+import java.util.List;
 
 public interface RestaurantRepository {
     boolean delete(Long id);
-    Restaurant save(Restaurant restaurant);
-    Iterable<Restaurant> findAll();
+    boolean save(Restaurant restaurant);
+    List<Restaurant> findAll();
+    Restaurant find(Long id);
 }
