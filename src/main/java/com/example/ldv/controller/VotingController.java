@@ -34,7 +34,7 @@ public class VotingController {
         return "voting";
     }
 
-    //save user vote
+    //saveAndFlush user vote
     @RequestMapping(method=RequestMethod.POST, value="/vote")
     public String saveVote(@RequestParam Long restaurantId){
         long userId = SecurityUtil.getUserId();

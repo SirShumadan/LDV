@@ -36,4 +36,9 @@ public class InMemoryRestRepoImpl implements RestaurantRepository{
         }
         return false;
     }
+
+    @Override
+    public Restaurant find(Long id) {
+        return null;
+    }
 }

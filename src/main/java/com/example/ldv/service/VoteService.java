@@ -23,31 +23,31 @@ public class VoteService {
         this.repo = voteRepo;
     }
 
-    public boolean save(Vote vote){
-        Vote v = repo.findByUserAndDate(getUserId(), currentDate());
+    public Vote save(Vote vote){
+        Vote v = repo.findByUserIdAndCreatedDate(getUserId(), currentDate());
         if(v != null) {
             if(!isVoteCanBeChanged()){
-                return false;
+                return v;
             }
             vote.setId(v.getId());
         }
-        return repo.save(vote);
+        return repo.saveAndFlush(vote);
     }
 
-    public boolean delete(Long id){
-        return repo.delete(id);
+    public void delete(Long id){
+        repo.deleteById(id);
     }
 
     public List<Vote> findByDate(LocalDate date){
-        return repo.findByDate(date);
+        return repo.findByCreatedDate(date);
     }
 
     public List<Vote> findByUser(Long userId){
-        return repo.findByUser(userId);
+        return repo.findByUserId(userId);
     }
 
     public Vote findByUserAndDate(Long userId, LocalDate date){
-        return repo.findByUserAndDate(userId, date);
+        return repo.findByUserIdAndCreatedDate(userId, date);
     }
 
 
