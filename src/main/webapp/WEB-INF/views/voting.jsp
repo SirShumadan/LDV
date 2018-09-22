@@ -5,13 +5,18 @@
     <title>Voting</title>
 </head>
 <body>
+
+<jsp:include page="menu.jsp"/>
+
 <h3>Voting Page</h3>
+
 <c:forEach var="restaurant" items="${restaurants}">
     <tr>
         <td>${restaurant.name}</td>
         <br/>
         <c:forEach var="dish" items="${restaurant.dishes}">
-        <td>${dish.name} :: ${dish.price}</td><br/>
+            <td>${dish.name} :: ${dish.price}</td>
+            <br/>
         </c:forEach>
         <td>
             <form method="post" action="voting/vote">

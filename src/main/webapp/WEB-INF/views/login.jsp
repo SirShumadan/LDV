@@ -5,10 +5,19 @@
     <title>Login Page</title>
 </head>
 <body>
+<jsp:include page="menu.jsp"/>
+
 <%--login form--%>
+<h1>Login</h1>
+<c:if test="${param.error == 'true'}">
+    <div style="color: red">
+        Login Failed!
+        Reason: ${sessionScope["SPRING_SECURITY_LAST_EXCEPTION"].message}
+    </div>
+</c:if>
 <div>
     <form action="${pageContext.request.contextPath}/j_spring_security_check" method="post">
-        <h2>Please sign in.</h2>
+        <h2>Enter your email and password: </h2>
         <input type="text" placeholder="Email address" name="username">
         <input type="password" placeholder="Password" name="password">
         <button type="submit">Sign in!</button>
