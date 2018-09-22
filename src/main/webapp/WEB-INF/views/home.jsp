@@ -7,5 +7,6 @@
 <body>
     <h3>Home Page</h3>
     <a href="voting">Voting!</a>
+    <a href="login">Login</a>
 </body>
 </html>

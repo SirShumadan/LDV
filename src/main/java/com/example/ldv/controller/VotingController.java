@@ -1,7 +1,6 @@
 package com.example.ldv.controller;
 
 import com.example.ldv.domain.Vote;
-import com.example.ldv.repository.RestaurantRepository;
 import com.example.ldv.service.RestaurantService;
 import com.example.ldv.service.VoteService;
 import com.example.ldv.util.SecurityUtil;
@@ -15,7 +14,7 @@ import java.time.LocalDate;
 import java.util.Map;
 
 @Controller
-@RequestMapping(value="/voting")
+@RequestMapping(value = "/voting")
 public class VotingController {
     private RestaurantService restaurantService;
     private VoteService voteService;
@@ -27,15 +26,15 @@ public class VotingController {
     }
 
     //return voting page
-    @RequestMapping(method=RequestMethod.GET)
-    public String getCurrentVoting(Map<String, Object> model){
+    @RequestMapping(method = RequestMethod.GET)
+    public String getCurrentVoting(Map<String, Object> model) {
         model.put("restaurants", restaurantService.restaurantsWithDishes());
         return "voting";
     }
 
     //saveAndFlush user vote
-    @RequestMapping(method=RequestMethod.POST, value="/vote")
-    public String saveVote(@RequestParam Long restaurantId){
+    @RequestMapping(method = RequestMethod.POST, value = "/vote")
+    public String saveVote(@RequestParam Long restaurantId) {
         long userId = SecurityUtil.getUserId();
         Vote vote = new Vote(userId, restaurantId, LocalDate.now());
         voteService.save(vote);
