@@ -9,6 +9,10 @@
 <c:forEach var="restaurant" items="${restaurants}">
     <tr>
         <td>${restaurant.name}</td>
+        <br/>
+        <c:forEach var="dish" items="${restaurant.dishes}">
+        <td>${dish.name} :: ${dish.price}</td><br/>
+        </c:forEach>
         <td>
             <form method="post" action="voting/vote">
                 <input type="hidden" name="restaurantId" value="${restaurant.id}">

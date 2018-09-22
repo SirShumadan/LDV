@@ -10,7 +10,7 @@ import javax.validation.constraints.Size;
 public class Dish {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name="id", nullable=false, updatable = false)
+    @Column(name = "id", nullable = false, updatable = false)
     private Long id;
 
     @Column(name = "name", nullable = false)
@@ -18,23 +18,36 @@ public class Dish {
     @Size(max = 100)
     private String name;
 
-    @Column(name="price", precision=10, scale=2)
+    @Column(name = "price", precision = 10, scale = 2)
     @NotNull
     private double price;
+
+    @Column(name = "restaurant_id")
+    @NotNull
+    private long restaurantId;
 
     public Dish() {
     }
 
-    public Dish(String name, double price) {
-        this(null, name, price);
+    public Dish(String name, double price, long restaurantId) {
+        this(null, name, price, restaurantId);
         this.name = name;
         this.price = price;
     }
 
-    public Dish(Long id, String name, double price) {
+    public Dish(Long id, String name, double price, long restaurantId) {
         this.id = id;
         this.name = name;
         this.price = price;
+        this.restaurantId = restaurantId;
+    }
+
+    public long getRestaurantId() {
+        return restaurantId;
+    }
+
+    public void setRestaurantId(long restaurantId) {
+        this.restaurantId = restaurantId;
     }
 
     public Long getId() {
@@ -70,7 +83,7 @@ public class Dish {
         if (obj == null || getClass() != obj.getClass()) {
             return false;
         }
-        if(obj instanceof Dish){
+        if (obj instanceof Dish) {
             Dish that = (Dish) obj;
             return id != null && id.equals(that.id);
         }

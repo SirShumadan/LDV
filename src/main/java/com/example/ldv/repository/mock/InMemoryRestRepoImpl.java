@@ -7,9 +7,7 @@ import org.springframework.stereotype.Repository;
 import java.util.ArrayList;
 import java.util.List;
 
-
-@Repository
-public class InMemoryRestRepoImpl implements RestaurantRepository{
+public class InMemoryRestRepoImpl {
     private List<Restaurant> data;
     {
         data = new ArrayList<>();
@@ -37,8 +35,7 @@ public class InMemoryRestRepoImpl implements RestaurantRepository{
         return false;
     }
 
-    @Override
-    public Restaurant find(Long id) {
+    public Restaurant findById(Long id) {
         return null;
     }
 }

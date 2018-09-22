@@ -1,12 +1,10 @@
 package com.example.ldv.repository;
 
 import com.example.ldv.domain.Dish;
+import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
 
-public interface DishRepository {
-    List<Dish> find(Long restaurantId);
-    boolean delete(Long id);
-    boolean deleteAll(Long restaurantId);
-    boolean save(Dish dish);
+public interface DishRepository extends JpaRepository<Dish, Long> {
+    List<Dish> findByRestaurantId(Long restaurantId);
 }
