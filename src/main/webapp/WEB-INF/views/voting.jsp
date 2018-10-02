@@ -6,26 +6,23 @@
 </head>
 <body>
 
-<jsp:include page="menu.jsp"/>
+<jsp:include page="parts/menu.jsp"/>
 
 <h3>Voting Page</h3>
+<table>
+    <c:forEach var="restaurant" items="${restaurants}">
 
-<c:forEach var="restaurant" items="${restaurants}">
-    <tr>
-        <td>${restaurant.name}</td>
-        <br/>
+        <tr><h3>${restaurant.name}</h3></tr>
         <c:forEach var="dish" items="${restaurant.dishes}">
-            <td>${dish.name} :: ${dish.price}</td>
-            <br/>
+            <li><b>${dish.name}</b> price: ${dish.price}</li>
         </c:forEach>
-        <td>
+        <tr>
             <form method="post" action="voting/vote">
                 <input type="hidden" name="restaurantId" value="${restaurant.id}">
                 <input type="submit" value="vote!">
             </form>
-        </td>
-    </tr>
-    <br/>
-</c:forEach>
+        </tr>
+    </c:forEach>
+</table>
 </body>
 </html>

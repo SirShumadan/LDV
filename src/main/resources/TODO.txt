@@ -1,12 +1,2 @@
-*   Голосование хранить в базе данных по интерфейсу:
-        -Current date
-        -UserID
-        -RestaurantID
-*   Implement RestaurantController
-*   Implement VotingController
-*   Implement repository.* package
-*   Spring Security
 **   Unit tests
-**   Create DTO Restaurant + dishes. Restaurant Entity should not contains Dishes list
 *   Implement cashing with some minutes delay for any objects?
-*   Use JPA!

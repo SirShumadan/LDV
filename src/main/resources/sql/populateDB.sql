@@ -4,8 +4,8 @@ DELETE FROM restaurants;
 DELETE FROM votes;
 
 INSERT INTO users (id, email, password) VALUES
-  (1, 'user@gmail.com', '12345'),
-  (2, 'admin@gmail.com', '12345');
+  (1, 'user@gmail.com', '1'),
+  (2, 'admin@gmail.com', '2');
 
 INSERT INTO user_role (user_id, role) VALUES
   (1, 'USER'),

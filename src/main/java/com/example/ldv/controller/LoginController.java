@@ -23,11 +23,11 @@ public class LoginController {
         }else{
             model.addAttribute("message", "You do not have permission to access this page!");
         }
-        return "error403";
+        return "parts/error403";
     }
 
     @RequestMapping(value="/logoutSuccessful", method=RequestMethod.GET)
     public String logoutPage(){
-        return "logoutSuccessful";
+        return "parts/logoutSuccessful";
     }
 }

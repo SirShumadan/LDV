@@ -5,7 +5,7 @@
     <title>Login Page</title>
 </head>
 <body>
-<jsp:include page="menu.jsp"/>
+<jsp:include page="parts/menu.jsp"/>
 
 <%--login form--%>
 <h1>Login</h1>

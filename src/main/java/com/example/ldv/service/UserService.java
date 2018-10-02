@@ -7,4 +7,5 @@ public interface UserService {
     User getUser(String login);
     void delete(Long userId);
     User save(User user);
+    User get(Long id);
 }

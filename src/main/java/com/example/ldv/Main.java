@@ -1,11 +1,5 @@
 package com.example.ldv;
 
-import com.example.ldv.controller.HomeController;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
-
-import java.time.LocalTime;
-
 public class Main {
     public static void main(String[] args) {
 //        ApplicationContext context = new ClassPathXmlApplicationContext("WEB-INF/spring/spring-app.xml");
