@@ -20,7 +20,7 @@
                 <a href="${pageContext.request.contextPath}/restaurant/${restaurant.id}/dish/edit/${dish.id}">EDIT</a>
             </td>
             <td>
-                <a href="${pageContext.request.contextPath}/restaurant/${restaurant.id}/dish/delete/${dish.id}">   DELETE</a>
+                <a href="${pageContext.request.contextPath}/restaurant/${restaurant.id}/dish/delete/${dish.id}">DELETE</a>
             </td>
         </tr>
     </c:forEach>
@@ -32,7 +32,6 @@
 <div>
     <br/>
     <a href="${pageContext.request.contextPath}/restaurant/delete/${restaurant.id}"><b>DELETE RESTAURANT</b></a>
-
 </div>
 </body>
 </html>

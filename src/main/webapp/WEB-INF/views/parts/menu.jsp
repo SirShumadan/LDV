@@ -1,6 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
-<div>
+<div style="height: 40px">
     <a href="${pageContext.request.contextPath}/">Home</a>
     <a href="${pageContext.request.contextPath}/voting">Voting</a>
     <c:if test="${pageContext.request.userPrincipal.name != null}">

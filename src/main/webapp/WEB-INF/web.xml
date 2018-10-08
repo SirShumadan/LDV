@@ -9,7 +9,7 @@
     <context-param>
         <param-name>contextConfigLocation</param-name>
         <param-value>
-            classpath:/spring/applicationContext-persistence.xml
+            classpath:/spring/context-persistence.xml
             classpath:/spring/security.xml
             classpath:/spring/spring-cache.xml
         </param-value>

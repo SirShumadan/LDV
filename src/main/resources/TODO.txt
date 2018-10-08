@@ -1,2 +1,4 @@
 **   Unit tests
-*   Implement cashing with some minutes delay for any objects?
+**   Cash! (Spring or/and hibernate)
+**   Add data validation.
+**   Implements custom LogoutHandler
