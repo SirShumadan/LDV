@@ -1,5 +1,0 @@
-**   Unit tests
-**   Cash! (Spring or/and hibernate)
-**   Add data validation.
-**   Implements check in
-*   Implements custom LogoutHandler
