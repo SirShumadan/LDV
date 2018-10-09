@@ -23,9 +23,11 @@ public class MainController {
 
     @RequestMapping("/")
     public String showHomePage(Principal principal){
-        String userName = principal.getName();
-        if(userName == null){
+        String userName;
+        if(principal == null){
             userName = "Anonymous";
+        }else {
+            userName = principal.getName();
         }
         log.info("User '{}' visit page '/'", userName);
         return "home";

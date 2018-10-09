@@ -2,7 +2,9 @@ package com.example.ldv.service.impl;
 
 
 import com.example.ldv.domain.Vote;
+import com.example.ldv.repository.UserRepository;
 import com.example.ldv.repository.VoteRepository;
+import com.example.ldv.service.UserService;
 import com.example.ldv.service.VoteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -10,21 +12,24 @@ import org.springframework.stereotype.Service;
 import java.time.LocalDate;
 import java.util.List;
 
-import static com.example.ldv.util.SecurityUtil.getUserId;
+import static com.example.ldv.util.SecurityUtil.getUserName;
 import static com.example.ldv.util.TimeUtil.currentDate;
 import static com.example.ldv.util.TimeUtil.isVoteCanBeChanged;
 
 @Service
 public class VoteServiceImpl implements VoteService {
     private VoteRepository repo;
-
+    private UserService userService;
     @Autowired
-    public VoteServiceImpl(VoteRepository voteRepo) {
+    public VoteServiceImpl(VoteRepository voteRepo, UserService userService)
+    {
         this.repo = voteRepo;
+        this.userService = userService;
     }
 
     public Vote save(Vote vote){
-        Vote v = repo.findByUserIdAndCreatedDate(getUserId(), currentDate());
+        long userId = userService.getUser(getUserName()).getId();
+        Vote v = repo.findByUserIdAndCreatedDate(userId, currentDate());
         if(v != null) {
             if(!isVoteCanBeChanged()){
                 return v;
